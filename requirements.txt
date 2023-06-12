@@ -1,6 +1,5 @@
 streamlit
 pymysql
 Xgboost
-sklearn
+s
 pandas
-install --upgrade pip
