@@ -1,5 +1,5 @@
 streamlit
 pymysql
-sgboost
+Xgboost
 sklearn
 pandas
