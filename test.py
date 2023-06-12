@@ -1,8 +1,3 @@
-!pip install pymysql
-!pip install xgboost
-!pip install sklearn
-!pip install pandas
-
 import pymysql as sql
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
