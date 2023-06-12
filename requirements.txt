@@ -3,3 +3,4 @@ pymysql
 Xgboost
 sklearn
 pandas
+--upgrade pip
