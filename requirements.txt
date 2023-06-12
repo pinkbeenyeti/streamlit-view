@@ -3,4 +3,4 @@ pymysql
 Xgboost
 sklearn
 pandas
---upgrade pip
+install --upgrade pip
