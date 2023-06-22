@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split # train/test
 import pandas as pd
 
 
-conn = sql.connect(host = '127.0.0.1', user = 'rbgus', password = '4056', db = 'diabates', charset='utf8')
+conn = sql.connect(host = '%', user = 'rbgus', password = '4056', db = 'diabates', charset='utf8')
 cur = conn.cursor()
 
 def movePage(page): 
