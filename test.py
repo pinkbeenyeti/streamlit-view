@@ -12,7 +12,7 @@ import pandas as pd
 
 
 
-conn = sql.connect(host = '192.168.55.225', user = 'rbgus', password = '4056', db = 'diabates', charset='utf8')
+conn = sql.connect(host = '116.122.12.16', port = 9876, user = 'rbgus', password = '4056', db = 'diabates', charset='utf8')
 cur = conn.cursor()
 
 def movePage(page): 
