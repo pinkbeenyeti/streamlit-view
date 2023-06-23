@@ -79,15 +79,20 @@ def insert():
     dia = st.number_input('is_diabates', 0, 1)
     
     if st.button("confirm"):
-        body = "INSERT INTO body_state ({0}, {1} , {2})".format(patient_id, preg, blood)
-        hormone = "INSERT INTO hormone ({0}, {1}, {2})".format(patient_id, ins, gls)
-        physical = "INSERT INTO physical ({0}, {1}, {2}, {3})".format(patient_id, age, bmi, skin)
-        diabates = "INSERT INTO is_diabate ({0}, {1})".format(patient_id, dia)
+        body = 'INSERT INTO diabates.body_state (Patient_Id, Pregnancies, BloodPressure) VALUES({0}, {1}, {2})'.format(patient_id, preg, blood)
+        hormone = 'INSERT INTO diabates.hormone (Patient_Id, Insulin, Glucose) VALUES({0}, {1}, {2})'.format(patient_id, ins, gls)
+        physical = 'INSERT INTO diabates.physical (Patient_Id, Age, BMI, SkinThickness) VALUES({0}, {1}, {2}, {3})'.format(patient_id, age, bmi, skin)
+        diabates = 'INSERT INTO diabates.is_diabate (Patient_Id, Outcome) VALUES({0}, {1})'.format(patient_id, dia)
         
         cur.execute(body)
         cur.execute(hormone)
         cur.execute(physical)
         cur.execute(diabates)
+        
+        conn.commit()
+        conn.close()
+        
+        st.write("데이터 삽입이 완료되었습니다.")
 
 def delete():
     table = st.sidebar.selectbox("모든 데이터를 보실건가요?", ["default", "테이블"])
@@ -101,10 +106,14 @@ def delete():
     sql2 = 'DELETE FROM physical WHERE Patient_Id = {0}'.format(delete)
     sql3 = 'DELETE FROM is_diabate WHERE Patient_Id = {0}'.format(delete)
     
-    cur.execute(sql)
-    cur.execute(sql1)
-    cur.execute(sql2)
-    cur.execute(sql3)
+    if st.button("confirm"):
+       cur.execute(sql)
+       cur.execute(sql1)
+       cur.execute(sql2)
+       cur.execute(sql3)
+       
+       conn.commit()
+       conn.close()
 
 def view():
     df = make_pd()
