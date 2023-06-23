@@ -9,7 +9,10 @@ from sklearn.model_selection import train_test_split # train/test
 import pandas as pd
 
 
-conn = sql.connect(host = '116.122.12.16', port = 9876, user = 'rbgus', password = '4056', db = 'diabates', charset='utf8')
+
+
+
+conn = sql.connect(host = '192.168.55.225', user = 'rbgus', password = '4056', db = 'diabates', charset='utf8')
 cur = conn.cursor()
 
 def movePage(page): 
@@ -176,8 +179,8 @@ def diabates_features():
             st.write("파란색 막대기는 당뇨병 환자를, 주황색은 일반인을 나타냅니다.")
             st.write("각 구간별 당뇨병 환자의 비율을 볼 수 있어요.")
             
-            sql = 'SELECT physical.SkinThisckness, is_diabate.Outcome FROM physical INNER JOIN is_diabate ON physical.Patient_Id = is_diabate.Patient_Id AND is_diabate.Outcome = 1'
-            sql2 = 'SELECT physical.SkinThisckness, is_diabate.Outcome FROM physical INNER JOIN is_diabate ON physical.Patient_Id = is_diabate.Patient_Id AND is_diabate.Outcome = 0'
+            sql = 'SELECT physical.SkinThickness, is_diabate.Outcome FROM physical INNER JOIN is_diabate ON physical.Patient_Id = is_diabate.Patient_Id AND is_diabate.Outcome = 1'
+            sql2 = 'SELECT physical.SkinThickness, is_diabate.Outcome FROM physical INNER JOIN is_diabate ON physical.Patient_Id = is_diabate.Patient_Id AND is_diabate.Outcome = 0'
             
             cur.execute(sql)
             res = cur.fetchall()
@@ -319,7 +322,7 @@ def diabates_features():
 
 def make_pd():
     sql = 'SELECT body_state.Pregnancies, hormone.Glucose FROM body_state INNER JOIN hormone ON body_state.Patient_Id = hormone.Patient_Id'
-    sql2 = 'SELECT body_state.BloodPressure, physical.SkinThisckness FROM body_state INNER JOIN physical ON body_state.Patient_Id = physical.Patient_Id'
+    sql2 = 'SELECT body_state.BloodPressure, physical.SkinThickness FROM body_state INNER JOIN physical ON body_state.Patient_Id = physical.Patient_Id'
     sql3 = 'SELECT hormone.Insulin FROM hormone '
     sql4 = 'SELECT physical.BMI FROM physical'
     sql5 = 'SELECT physical.Age, is_diabate.Outcome FROM physical INNER JOIN is_diabate ON physical.Patient_Id = is_diabate.Patient_Id'
